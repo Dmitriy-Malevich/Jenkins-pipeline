@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage("First step") {
             steps {
-                sh 'ssh root@165.232.65.123 \'hostname\''
+                sh 'ssh -o StrictHostKeyChecking=no root@165.232.65.123 \'hostname\''
             }
         }
     }
