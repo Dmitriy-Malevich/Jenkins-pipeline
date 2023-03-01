@@ -15,7 +15,7 @@ pipeline {
   			remote.name = 'root'
   			remote.host = '165.232.65.123'
   			remote.allowAnyHosts = true
-  			withCredentials([usernamePassword(credentialsId: 'SSH-TESTT', usernameVariable: 'root')]) {
+  			withCredentials([usernamePassword(credentialsId: 'pipeline-ssh-key', usernameVariable: 'root')]) {
    			remote.user = "${username}"
   	}
   			sshCommand remote: remote, command: "pwd"
