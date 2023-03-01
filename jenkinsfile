@@ -2,7 +2,9 @@
 properties([disableConcurrentBuilds()])
 
 pipeline {
-    agent any
+    agent {
+	label 'ubuntu slave'
+	}
     options {
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
         timestamps()
@@ -10,16 +12,7 @@ pipeline {
     stages {
         stage("First step") {
             steps {
-                def remote = [:]
-                remote.name = 'origin'
-                remote.host = '165.232.65.123'
-                remote.user = 'root'
-                remote.password = 'Jundevops228QW'
-                remote.allowAnyHosts = true
-                stage('Remote SSH') {
-                    sshCommand remote: remote, command: "ls -lrt"
-                    sshCommand remote: remote, command: "for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done"
-    }
+                pwd
 
             }
         }
