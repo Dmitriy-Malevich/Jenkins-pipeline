@@ -1,21 +1,18 @@
-#!groovy
-properties([disableConcurrentBuilds()])
-
 pipeline {
-    agent {
-	label 'ubuntu slave'
-	}
+    agent { 
+        label 'ubuntu_slave'
+    }
     options {
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
         timestamps()
     }
-    stages {
-        stage("First step") {
-            steps {
-                sh 'pwd'
-		sh 'hostname'
 
-            }
+    stages {
+        stage('First step') {
+           steps {
+               sh 'pwd'
+               sh 'hostname'
+           }
         }
-    }    
-} 
+    }
+}
