@@ -12,7 +12,8 @@ pipeline {
     stages {
         stage("First step") {
             steps {
-                pwd
+                sh 'pwd'
+		sh 'hostname'
 
             }
         }
